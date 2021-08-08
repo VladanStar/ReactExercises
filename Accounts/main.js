@@ -1,3 +1,5 @@
+window.addEventListener('beforeunload',save);
+
 let accountsTableBody = document.querySelector("#accounts-table-body");
 // let accountsViewBtn = document.querySelector('[href="accounts-view"]');
 // let addAccountsViewBtn = document.querySelector('[href="add-account-view"]');
@@ -11,8 +13,29 @@ let lastNameInput = document.querySelector('[placeholder="lastname"]');
 let emailInput = document.querySelector('[placeholder="email"]');
 let phoneInput = document.querySelector('[placeholder="phone"]');
 let saveBtn = document.querySelector("#save");
+let eId = document.querySelector('.eId');
+let eName = document.querySelector('.eName');
+let eLastName = document.querySelector('.eLastName');
+let eEmail = document.querySelector('.eEmail');
+let ePhone = document.querySelector('.ePhone');
+let editBtn = document.querySelector('#edit');
+let id;
 
+editBtn.addEventListener('click',saveEditAccount);
 saveBtn.addEventListener("click", saveAccount);
+
+function saveEditAccount(){
+    const editedAccount = {
+    id:eId.value,
+    name:eName.value,
+    lastname: eLastName.value,
+    email:eEmail.value,
+    phone:ePhone.value
+    }
+   db[id] = editedAccount;
+   createAccountsTable();
+   showView('#accounts-view');
+}
 function saveAccount() {
   const newAccount = {
     id: idInput.value,
@@ -32,7 +55,7 @@ function saveAccount() {
 }
 
 // iz nekog razloga mora da bude ovde inace ne povezuje sa db
-console.log(db);
+//console.log(db);
 
 // // Add accounts button
 // addAccountsViewBtn.addEventListener('click', function(e){
@@ -81,8 +104,36 @@ function createAccountsTable() {
         <td>${account.lastname}</td>
         <td>${account.email}</td>
         <td>${account.phone}</td>
+        <td><button data-id="${i}" class= "edit-btn btn btn-sm btn-warning form-control">Edit</button></td>
+        <td><button data-id="${i}" class= "delete-btn btn btn-sm btn-danger form-control">Delete</button></td>
     </tr>
     `;
   }
   accountsTableBody.innerHTML = htmlAccounts;
+  let allDeleteBtns = document.querySelectorAll('.delete-btn');
+  let allEditBtns = document.querySelectorAll('.edit-btn');
+  for(let i=0; i<allDeleteBtns.length;i++){
+      allDeleteBtns[i].addEventListener('click', deleteAccount);
+      allEditBtns[i].addEventListener('click',editAccount);
+
+  }
+}
+function deleteAccount(){
+    let id = this.getAttribute('data-id');
+ db.splice(id,1);
+ createAccountsTable();
+ showView('#accounts-view');
+}
+function editAccount(){
+     id = this.getAttribute('data-id');
+    let selectedAccount = db[id];
+    eId.value = selectedAccount.id;
+    eName.value = selectedAccount.name;
+    eLastName.value = selectedAccount.lastname;
+    eEmail.value = selectedAccount.email;
+    ePhone.value = selectedAccount.phone;
+    showView('#edit-account-view');
+}
+function save(){
+    localStorage.db = JSON.stringify(db);
 }
