@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>React Beginer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="./css/main.css"
+    />
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+    const Logo =()=>{
+      return(
+        <h1><a href="#"></a>Logo</h1>
+      )
+    }
+     const Header =()=> {
+        return (
+            <header>
+              <Logo/>
+                <h1>Ovo je header </h1>
+            </header>
+        )
+      }
+      ReactDOM.render(<Header/>, document.querySelector("#app"));
+    </script>
+
+    <script src="./js/main.js"></script>
+  </body>
+</html>
