@@ -1,32 +1,23 @@
 import React, { useState } from "react";
+import Objava from "./Objava";
+import "./App.css"
 
-import "./App.css";
 function App() {
-  // react.createElement(div)
+  const [users, setUser] = useState([
+    { ime: "Stajic", objava: "golman", broj: "1" },
+    { ime: "Kostov", objava: "desni bek", broj: "2" },
+    { ime: "Palezevic", objava: "desni half", broj: "4" },
+    { ime: "Tomcic", objava: "centarhalf", broj: "5" },
+    { ime: "Krstic", objava: "centarfor", broj: "9" },
+    { ime: "Stasic", objava: "centralni vezni", broj: "5" },
+  ]);
 
-  //useState();
-  const [isRed, setRed] = useState(false);
-  const [count, setCount] = useState(0);
+  return <div className="app">
+   {users.map(user=>(
+     <Objava ime ={user.ime} objava ={user.objava}  broj={user.broj}/>
+   ))}
 
-  // const[user, setUser] = useState({
-  //   ime:"Vladan",
-  //   godine:"48",
-  //   objave["RMA","ISA"];
-  // })
-
-  const increment =()=>{
-    setCount(count+1);
-    setRed(!isRed);
-  }
-
-  return (
-    <div className="app">
-      <h1 className={isRed ? "red": "green"}>Naslov koji menja bolju</h1>
-      <button onClick={increment}>Uvecaj</button>
-      
-      <h1>{count}</h1>
-    </div>
-  );
-}
+  </div>
+};
 
 export default App;
