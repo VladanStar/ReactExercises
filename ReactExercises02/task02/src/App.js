@@ -9,7 +9,7 @@ function App() {
     { ime: "Palezevic", objava: "desni half", broj: "4" },
     { ime: "Tomcic", objava: "centarhalf", broj: "5" },
     { ime: "Krstic", objava: "centarfor", broj: "9" },
-    { ime: "Stasic", objava: "centralni vezni", broj: "5" },
+    { ime: "Stasic", objava: "centralni vezni", broj: "8" },
   ]);
 
   return <div className="app">
