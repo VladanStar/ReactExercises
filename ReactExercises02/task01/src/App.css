@@ -1,0 +1,26 @@
+.app {
+  min-height: 100vh;
+  background-color: lightblue;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.objava {
+  width: 200px;
+  height: 200px;
+  margin: 10px auto;
+  border: 2px solid black;
+  text-align: center;
+  background-color: white;
+  border-radius: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.red{
+  color: red;
+}
+.green {
+  color: darkgreen;
+}
