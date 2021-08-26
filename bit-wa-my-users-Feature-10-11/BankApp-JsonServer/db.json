@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Jovan",
+      "deposit": 15000,
+      "cCard": "Payoner"
+    },
+    {
+      "id": 2,
+      "name": "Marko",
+      "deposit": "45000",
+      "cCard": "Masetro"
+    },
+    {
+      "id": 3,
+      "name": "Janko",
+      "deposit": "45000",
+      "cCard": "Master"
+    },
+    {
+      "id": 4,
+      "name": "Ivan",
+      "deposit": "45000",
+      "cCard": "Visa"
+    },
+    {
+      "id": 5,
+      "name": "Srdjan",
+      "deposit": "45000",
+      "cCard": "Dinners"
+    },
+    {
+      "id": 6,
+      "name": "Nikola",
+      "deposit": "45000",
+      "cCard": "AmericanExspress"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Promises</title>
+</head>
+
+<body>
+
+    <script>
+        let promises = [];
+
+        for (let i = 0; i < 100; i++) {
+            const promise = new Promise(function (resolve, reject) {
+                    setTimeout(function () {
+                        // console.log(`from promise ${i+1}`);
+                        resolve();
+                    }, i * 10);
+                })
+                .then(console.log(`from promise ${i+1}`))
+
+            promises.push(promise);
+        }
+
+        Promise.all(promises)
+            .then(function () {
+                console.log('All done!');
+            });
+    </script>
+</body>
+
+</html>

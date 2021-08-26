@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movies</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body class="single-page">
+    <nav id="main-nav" class="navbar justify-content-between">
+        <div class="container">
+            <a class="navbar-brand">BitShow</a>
+            <form class="form-inline">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <ul class="search-results"></ul>
+            </form>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1 class="single-show-title"></h1>
+        <div class="row row1">
+            <div class="col-md-6 single-show-img"></div>
+            <div class="col-md-6 ">
+                <div>
+                    <h3>Seasons <span class="season-counter"></span></h3>
+                    <ul class="single-show-seasons"></ul>
+                </div>
+                <div>
+                    <h3>Cast</h3>
+                    <ul class="single-show-cast"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="row row2">
+            <h2>Show details:</h2>
+            <div class="col-12 single-show-details"></div>
+        </div>
+        <button  class="btn btn-primary"><a href="index.html"> Back to Main Page</a> </button>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h5>Copyright &copy; Nikola Radovic, 2018.</h5>
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+        <script type="module" src="./js/data/data_module.js"></script>
+        <script  type="module" src="./js/ui/ui_module.js"></script>
+    <script type="module" src="./js/ctrl_module.js"></script>
+    <script type="module" src="./js/single_ctrl_module.js"></script>
+
+</body>
+
+</html>

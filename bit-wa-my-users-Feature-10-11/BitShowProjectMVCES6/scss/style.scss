@@ -1,0 +1,56 @@
+$main-bckg-color: #333;
+$main-color: #fff;
+
+body {
+    min-height: 100vh;
+}
+
+img {
+    max-width: 100%;
+}
+
+#main-nav {
+    position: relative;
+    background-color: $main-bckg-color;
+    color: $main-color;
+}
+
+.search-results {
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: $main-color;
+    color: $main-bckg-color;
+    z-index: 10;
+    border: 1px solid rgba(0,0,0,0.3);
+}
+
+.single-show {
+    cursor: pointer;
+}
+
+.form-inline {
+    position: relative;
+    box-sizing: border-box;
+}
+
+ h1 {
+    text-align: center;
+}
+
+footer {
+    background-color: $main-bckg-color;
+    padding: 20px 0;
+    text-align: center;
+    color: $main-color;
+}
+
+.col-show {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.show-title {
+    padding: 15px 0 5px;
+}

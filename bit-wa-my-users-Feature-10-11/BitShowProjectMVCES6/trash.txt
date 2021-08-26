@@ -1,0 +1,251 @@
+// var ctrlModule = ((dataModule, uiModule) => {
+
+//     function loadPage() {
+//         const request = $.get(dataModule.showAll.url).done(response => {
+
+//             const shows = dataModule.createShows(response);
+//             uiModule.landingPageShows(shows);
+//         });
+//         request.fail(() => {
+//             alert("Your request failed.");
+//         });
+//     }
+
+//     const searchInput = $(".form-control");
+//     searchInput.on("keyup", searchShowTrigger);
+
+//     function searchShowTrigger(event) {
+//         let urlSearch = dataModule.showAll.urlSearch;
+//         let searchVal = searchInput.val();
+//         let searchShowName = `${urlSearch}${searchVal}`;
+
+//         if (searchInput.val().length < 3) {
+//             return;
+//         }
+
+//         let requestSearch = $.get(searchShowName).done(response => {
+//             let list = dataModule.searchShow(response);
+//             uiModule.appendListShows(list);
+//         })
+//     }
+
+//     $(document).on("click", ".single-show", function () {
+//         const currentID = this.getAttribute("data-id");
+//         data_module.addToStorage("showID", currentID);
+//         window.location.href = './show.html';
+//     });
+
+//     return {
+//         loadPage
+//     }
+
+// })(data_module, ui_module);
+
+// $(ctrlModule.loadPage())
+
+
+// var ui_module = (() => {
+//     const landingPageShows = showsList => {
+       
+//         showsList.forEach(show => {  
+//             const image = show.image;
+//             const name = show.name;
+//             const id = show.id;
+//             const columnDiv = `<div class="col-md-3 col-show single-show" data-id="${id}"><img src="${image}" alt="show" /><h3 class="show-title">${name}</h3></div>`;
+//             $("#main-row").append(columnDiv);
+//         });
+//     }
+
+//     const appendListShows = listOfShows => {
+//         const ul = $(".search-results").empty();
+
+//         listOfShows.forEach(element => {
+//             const movieName = element.name;
+//             const showID = element.id;
+//             const liSearch = `<li class="single-show" data-id="${showID}">${movieName}</li>`;
+//             ul.append(liSearch);
+//         })
+//     }
+
+//     const appendSingleShow = currentShow => {
+//         const imgHolder = $(".single-show-img");
+//         const titleHolder = $(".single-show-title");
+//         const summaryHolder = $(".single-show-details");
+        
+//         imgHolder.append(`<img src="${currentShow.image.original}"/>`);
+//         titleHolder.text(`${currentShow.name}`);
+//         summaryHolder.html(`${currentShow.summary}`);
+//     }
+
+//     const appendCast = crew => {
+//         const showCrew = $(".single-show-cast");
+
+//         crew.forEach(crewMember => {
+//             const showPerson = crewMember.person;
+//             const crewHolder = `<li>${showPerson.name}</li>`;
+            
+//             showCrew.append(crewHolder);
+//         })
+
+//     }
+
+//     const appendSeason = seasons => {
+//         const showSeason = $(".single-show-seasons");
+//         const seasonCounter = $(".season-counter");
+
+//         seasons.forEach(season => {
+//             const showPremiere = season.premiereDate;
+//             const showEnd = season.endDate;
+//             const seasonHolder = `<li>${showPremiere} - ${showEnd}</li>`;
+
+//             showSeason.append(seasonHolder);
+//         })
+//         seasonCounter.text(seasons.length)
+//     }
+ 
+//     return {
+//         landingPageShows,
+//         appendListShows,
+//         appendSingleShow,
+//         appendCast,
+//         appendSeason
+//     }
+// })();
+
+
+// var single_ctrl_module = ((uiModule, dataModule) => {
+
+//     const initialLoad = () => {
+//         const singleID = dataModule.getSingleShowID("showID");
+//         displaySingleShow(parseInt(singleID));
+//     }
+
+//     const displaySingleShow = (id) => {
+//         $.get(`${dataModule.showAll.url}/${id}`).done(function (response) {
+//             const currentShow = dataModule.createSingleShow(response);
+//             uiModule.appendSingleShow(currentShow);
+//         })
+//         $.get(`${dataModule.showAll.url}/${id}/cast`).done(function (response) {
+//             const currentCrew = dataModule.createCast(response);
+//             uiModule.appendCast(currentCrew);
+//         });
+//         $.get(`${dataModule.showAll.url}/${id}/seasons`).done(function (response) {
+//             const currentSeason = dataModule.createSeason(response);
+//             uiModule.appendSeason(currentSeason);
+//         });
+//     }
+
+//     return {
+//         initialLoad
+//     }
+
+// })(ui_module, data_module)
+// $(single_ctrl_module.initialLoad())
+
+
+
+
+// var data_module = (() => {
+
+//     const showAll = {
+//         url: "https://api.tvmaze.com/shows",
+//         urlSearch: "http://api.tvmaze.com/search/shows?q="
+//     }
+
+//     class Show {
+//         constructor(id, name, image = "") {
+//             this.id = id;
+//             this.name = name;
+//             this.image = image;
+//         }
+//     }
+//     const createShows = shows => {
+//         let listOfShows = [];
+
+//         shows.forEach((element, index) => {
+//             if (element.rating.average > 7) {
+//                 if (index < 50) {
+//                     listOfShows.push(new Show(element.id, element.name, element.image.medium));
+//                 }
+//             }
+//         });
+
+//         return listOfShows
+//     }
+
+//     const searchShow = showList => {
+//         let show10 = [];
+
+//         showList.forEach(({ show }, index) => {
+//             if (index < 10) {
+//                 let showName = new Show(show.id, show.name);
+//                 show10.push(showName);
+//             }
+//         })
+
+//         return show10
+//     }
+
+//     const addToStorage = (key, value) => {
+//         localStorage.setItem(key, value);
+//     }
+
+//     const getSingleShowID = (key) => {
+//         return localStorage.getItem(key);
+//     }
+
+//     class singleShow extends Show {
+//         constructor(id, name, image, summary) {
+//             super("", name, image);
+//             this.summary = summary;
+//         }
+//     }
+
+//     const createSingleShow = show => {
+//         const currentShow = new singleShow("", show.name, show.image, show.summary);
+//         return currentShow
+//     }
+
+//     class Cast {
+//         constructor(person) {
+//             this.person = person;
+//         }
+//     }
+//     const createCast = cast => {
+//         let castList = [];
+
+//         cast.forEach((element, index) => {
+//             castList.push(new Cast(element.person));
+//         });
+
+//         return castList
+//     }
+
+//     class Season {
+//         constructor(premiereDate, endDate) {
+//             this.premiereDate = premiereDate;
+//             this.endDate = endDate;
+//         }
+//     }
+//     const createSeason = seasons => {
+//         const seasonsList = [];
+
+//         seasons.forEach(season => {
+//             seasonsList.push(new Season(season.premiereDate, season.endDate));
+//         })
+
+//         return seasonsList;
+//     }
+
+//     return {
+//         createShows,
+//         showAll,
+//         searchShow,
+//         addToStorage,
+//         getSingleShowID,
+//         createSingleShow,
+//         createCast,
+//         createSeason
+//     }
+
+// })()

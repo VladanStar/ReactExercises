@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+<body>
+
+
+<div class="jumbotron text-center">
+    <div class="row">
+    	<div class="col-lg-2 col-lg-offset-2"><h3 id="time"></h3></div>
+    	<div class="col-lg-2 col-lg-offset-4"><h3 id="date"></h3></div>
+    </div>
+	<h2>Bank APP</h2>
+	<button  id="acc" class="btn btn-primary">Accounts</button>
+	<button id="addAcc" class="btn btn-success">Add Accounts</button>
+	<button id="editAcc" class="btn btn-warning">Edit Accounts</button>
+</div>
+
+<div class="container-fluid">
+	<div id="mainrow" class="row">
+		<div class="col-lg-8 col-lg-offset-2">
+			<h2 class="page-header">Accounts</h2>
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<table class="table">
+						<thead>
+							<tr>
+							<th>id</th>	
+							<th>Name</th>	
+							<th>Deposit</th>	
+							<th>Create Card</th>	
+							</tr>
+						</thead>
+						<tbody id="mainbody">
+							
+						</tbody>
+
+					</table>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div id="formrow" class="row">
+		<div class="col-lg-8 col-lg-offset-2">
+			<h2 class="page-header">Add Account</h2>
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<input type="text"  name="id" placeholder="id" class="form-control"><br>
+					<input type="text" name="name" placeholder="Name" class="form-control"><br>
+					<input type="text" name="deposit" placeholder="Deposit" class="form-control"><br>
+					<input type="text" name="ccard" placeholder="CreditCard" class="form-control"><br>
+					<input type="button" id="adduser" value="Add Account" class="form-control btn btn-primary">
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="editformrow" class="row">
+		<div class="col-lg-8 col-lg-offset-2">
+			<h2 class="page-header">Edit Account</h2>
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<input type="text"  name="editid" placeholder="id" value="" class="form-control"><br>
+					<input type="text" name="editname" placeholder="Name" class="form-control"><br>
+					<input type="text" name="editdeposit" placeholder="Deposit" class="form-control"><br>
+					<input type="text" name="editccard" placeholder="CreditCard" class="form-control"><br>
+					<input type="button" id="edituser" value="Edit Account" class="form-control btn btn-primary">
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<script src="main.js"></script>	
+</body>
+</html>
