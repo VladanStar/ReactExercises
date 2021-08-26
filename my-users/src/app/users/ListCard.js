@@ -3,8 +3,8 @@ import {Link} from "react-router-dom";
 
 const ListCard = (props) => {
   const { id, email, name,last, dob, picture } = props.data
-
-
+ console.log(props.data)
+  // console.log(email, name, dob, picture);
 
   return (
 

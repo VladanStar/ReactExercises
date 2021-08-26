@@ -6,7 +6,6 @@ import Footer from './partials/Footer'
 import { userService } from '.././service/usersService'
 import Main from './users/Main'
 import Load from './Load';
-import NotFound from './NotFound';
 
 
 
@@ -80,17 +79,18 @@ class App extends Component {
     
     let users = this.state.user
   
-    let filterUsers = users.filter((singleUser)=>{return singleUser.fullName.toLowerCase().indexOf(this.state.search) !== -1})
-    console.log(filterUsers);
+    let filterUsers = users.filter((singleUser)=>{return singleUser.fullName.indexOf(this.state.search) !== -1})
+    // console.log(filterUsers);
     
-
+    filterUsers.map((singleUser)=>{singleUser})
     
-  
+    
     
     return (
       <div>
         <Header click={this.handleStates} nameIcon={this.state.nameIcon} refresh={this.refreshData} value={this.state.search} keyup={this.updateSearch.bind(this)}/>
-           {filterUsers ==filterUsers.length ? <NotFound/> : this.state.load ?  <Load /> : <Main data={filterUsers} displayCard={this.state.displayCard}  />}
+          {this.state.load ?  <Load /> : <Main data={filterUsers} displayCard={this.state.displayCard}  /> }
+        
         <Footer />
       </div>
 
